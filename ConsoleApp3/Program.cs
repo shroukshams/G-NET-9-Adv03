@@ -584,41 +584,41 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q16: What is contravariance? Explain the 'in' keyword.
-/*
-**Contravariance** allows a generic type parameter to be assigned a more generic type than that specified by the generic. In C#, contravariance applies to generic interfaces and delegates, specifically when the type parameter is used only as an argument type (input) to the interface or delegate’s methods.
+///*
+//**Contravariance** allows a generic type parameter to be assigned a more generic type than that specified by the generic. In C#, contravariance applies to generic interfaces and delegates, specifically when the type parameter is used only as an argument type (input) to the interface or delegate’s methods.
 
-The **`in` keyword** is used to mark a generic type parameter as contravariant. This means that if you have a generic interface `IComparer<in T>`, and `Base` is a base class of `Derived`, then `IComparer<Base>` can be implicitly converted to `IComparer<Derived>`. The `in` keyword ensures that `T` can only appear in an "in" position (e.g., as a method argument, but not as a method return type).
-*/
+//The **`in` keyword** is used to mark a generic type parameter as contravariant. This means that if you have a generic interface `IComparer<in T>`, and `Base` is a base class of `Derived`, then `IComparer<Base>` can be implicitly converted to `IComparer<Derived>`. The `in` keyword ensures that `T` can only appear in an "in" position (e.g., as a method argument, but not as a method return type).
+//*/
 
-public class Person { public string Name { get; set; } }
-public class Employee : Person { }
+//public class Person { public string Name { get; set; } }
+//public class Employee : Person { }
 
-public interface IComparerContravariant<in T>
-{
-    int Compare(T x, T y);
-}
+//public interface IComparerContravariant<in T>
+//{
+//    int Compare(T x, T y);
+//}
 
-public class PersonComparer : IComparerContravariant<Person>
-{
-    public int Compare(Person x, Person y)
-    {
-        return string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
-    }
-}
+//public class PersonComparer : IComparerContravariant<Person>
+//{
+//    public int Compare(Person x, Person y)
+//    {
+//        return string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+//    }
+//}
 
-/*
-// Example Usage:
-IComparerContravariant<Person> personComparer = new PersonComparer();
+///*
+//// Example Usage:
+//IComparerContravariant<Person> personComparer = new PersonComparer();
 
-// Contravariance in action: IComparerContravariant<Person> can be assigned to IComparerContravariant<Employee>
-IComparerContravariant<Employee> employeeComparer = personComparer;
+//// Contravariance in action: IComparerContravariant<Person> can be assigned to IComparerContravariant<Employee>
+//IComparerContravariant<Employee> employeeComparer = personComparer;
 
-Employee emp1 = new Employee { Name = "Alice" };
-Employee emp2 = new Employee { Name = "Bob" };
+//Employee emp1 = new Employee { Name = "Alice" };
+//Employee emp2 = new Employee { Name = "Bob" };
 
-int result = employeeComparer.Compare(emp1, emp2);
-Console.WriteLine($"Comparison result for employees: {result}"); // Output: Comparison result for employees: -1 (Alice < Bob)
-*/
+//int result = employeeComparer.Compare(emp1, emp2);
+//Console.WriteLine($"Comparison result for employees: {result}"); // Output: Comparison result for employees: -1 (Alice < Bob)
+//*/
 #endregion
 
 #region Q17: What is the difference between covariance and contravariance?
