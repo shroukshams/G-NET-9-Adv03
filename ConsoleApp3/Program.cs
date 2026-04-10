@@ -671,246 +671,246 @@ In essence, **covariance** allows you to use a more specific type where a less s
 #endregion
 
 #region Q19: How can you inherit from a generic class?
-/////*
-////You can inherit from a generic class in a few ways:
-
-////1.  **By providing concrete type arguments:** The derived class is no longer generic.
-////2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
-////3.  **By combining concrete types and its own type parameters.**
-
-////When inheriting, the base class's generic type parameters must be satisfied.
-////*/
-
-//// Base generic class
-//public class BaseGenericClass<T>
-//{
-//    public T Value { get; set; }
-
-//    public BaseGenericClass(T value)
-//    {
-//        Value = value;
-//    }
-
-//    public void DisplayValue()
-//    {
-//        Console.WriteLine($"Base value ({typeof(T).Name}): {Value}");
-//    }
-//}
-
-//// 1. Derived class with concrete type argument
-//public class SpecificDerivedClass : BaseGenericClass<string>
-//{
-//    public SpecificDerivedClass(string value) : base(value) { }
-
-//    public void DisplaySpecificValue()
-//    {
-//        Console.WriteLine($"Specific derived value: {Value.ToUpper()}");
-//    }
-//}
-
-//// 2. Derived class passing its own type parameter
-//public class GenericDerivedClass<T> : BaseGenericClass<T>
-//{
-//    public GenericDerivedClass(T value) : base(value) { }
-
-//    public void DisplayGenericDerivedValue()
-//    {
-//        Console.WriteLine($"Generic derived value ({typeof(T).Name}): {Value}");
-//    }
-//}
-
-//// 3. Derived class with its own type parameter and a concrete type for the base
-//public class MixedDerivedClass<TId> : BaseGenericClass<string>
-//{
-//    public TId Id { get; set; }
-
-//    public MixedDerivedClass(string value, TId id) : base(value)
-//    {
-//        Id = id;
-//    }
-
-//    public void DisplayMixedValue()
-//    {
-//        Console.WriteLine($"Mixed derived value (Base: {Value}, Id: {Id})");
-//    }
-//}
-
-///*
-//// Example Usage:
-//SpecificDerivedClass specific = new SpecificDerivedClass("hello");
-//specific.DisplayValue();
-//specific.DisplaySpecificValue();
-//// Output:
-//// Base value (String): hello
-//// Specific derived value: HELLO
-
-//GenericDerivedClass<int> genericDerived = new GenericDerivedClass<int>(123);
-//genericDerived.DisplayValue();
-//genericDerived.DisplayGenericDerivedValue();
-//// Output:
-//// Base value (Int32): 123
-//// Generic derived value (Int32): 123
-
-//MixedDerivedClass<Guid> mixedDerived = new MixedDerivedClass<Guid>("item", Guid.NewGuid());
-//mixedDerived.DisplayValue();
-//mixedDerived.DisplayMixedValue();
-//// Output:
-//// Base value (String): item
-//// Mixed derived value (Base: item, Id: ...)
-//*/
-#endregion
-
-#region Q20: Complete Exercise - Create a generic Cache<TKey, TValue> with Add, Get, Remove, Contains, and expiration support.
 /*
-This `Cache<TKey, TValue>` class provides a simple in-memory cache with basic operations and an expiration mechanism. It uses a `Dictionary` internally to store cache entries, where each entry includes the value and its expiration time.
+You can inherit from a generic class in a few ways:
+
+1.  **By providing concrete type arguments:** The derived class is no longer generic.
+2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
+3.  **By combining concrete types and its own type parameters.**
+
+When inheriting, the base class's generic type parameters must be satisfied.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class Cache<TKey, TValue>
+// Base generic class
+public class BaseGenericClass<T>
 {
-    private class CacheEntry
+    public T Value { get; set; }
+
+    public BaseGenericClass(T value)
     {
-        public TValue Value { get; set; }
-        public DateTime ExpirationTime { get; set; }
+        Value = value;
     }
 
-    private readonly Dictionary<TKey, CacheEntry> _cache = new Dictionary<TKey, CacheEntry>();
-    private readonly TimeSpan _defaultExpiration;
-
-    public Cache(TimeSpan defaultExpiration)
+    public void DisplayValue()
     {
-        _defaultExpiration = defaultExpiration;
+        Console.WriteLine($"Base value ({typeof(T).Name}): {Value}");
+    }
+}
+
+// 1. Derived class with concrete type argument
+public class SpecificDerivedClass : BaseGenericClass<string>
+{
+    public SpecificDerivedClass(string value) : base(value) { }
+
+    public void DisplaySpecificValue()
+    {
+        Console.WriteLine($"Specific derived value: {Value.ToUpper()}");
+    }
+}
+
+// 2. Derived class passing its own type parameter
+public class GenericDerivedClass<T> : BaseGenericClass<T>
+{
+    public GenericDerivedClass(T value) : base(value) { }
+
+    public void DisplayGenericDerivedValue()
+    {
+        Console.WriteLine($"Generic derived value ({typeof(T).Name}): {Value}");
+    }
+}
+
+// 3. Derived class with its own type parameter and a concrete type for the base
+public class MixedDerivedClass<TId> : BaseGenericClass<string>
+{
+    public TId Id { get; set; }
+
+    public MixedDerivedClass(string value, TId id) : base(value)
+    {
+        Id = id;
     }
 
-    /// <summary>
-    /// Adds an item to the cache with the default expiration.
-    /// </summary>
-    public void Add(TKey key, TValue value)
+    public void DisplayMixedValue()
     {
-        Add(key, value, _defaultExpiration);
-    }
-
-    /// <summary>
-    /// Adds an item to the cache with a specified expiration duration.
-    /// </summary>
-    public void Add(TKey key, TValue value, TimeSpan duration)
-    {
-        var expirationTime = DateTime.UtcNow.Add(duration);
-        _cache[key] = new CacheEntry { Value = value, ExpirationTime = expirationTime };
-        Console.WriteLine($"Added item with key '{key}'. Expires at {expirationTime.ToLocalTime()}");
-    }
-
-    /// <summary>
-    /// Retrieves an item from the cache. Returns default(TValue) if not found or expired.
-    /// </summary>
-    public TValue Get(TKey key)
-    {
-        if (_cache.TryGetValue(key, out var entry))
-        {
-            if (entry.ExpirationTime > DateTime.UtcNow)
-            {
-                Console.WriteLine($"Retrieved item with key '{key}'.");
-                return entry.Value;
-            }
-            else
-            {
-                // Item expired, remove it
-                _cache.Remove(key);
-                Console.WriteLine($"Item with key '{key}' expired and removed.");
-            }
-        }
-        Console.WriteLine($"Item with key '{key}' not found or already expired.");
-        return default(TValue);
-    }
-
-    /// <summary>
-    /// Removes an item from the cache.
-    /// </summary>
-    public bool Remove(TKey key)
-    {
-        if (_cache.Remove(key))
-        {
-            Console.WriteLine($"Removed item with key '{key}'.");
-            return true;
-        }
-        Console.WriteLine($"Item with key '{key}' not found for removal.");
-        return false;
-    }
-
-    /// <summary>
-    /// Checks if the cache contains an active item for the given key.
-    /// </summary>
-    public bool Contains(TKey key)
-    {
-        if (_cache.TryGetValue(key, out var entry))
-        {
-            if (entry.ExpirationTime > DateTime.UtcNow)
-            {
-                Console.WriteLine($"Cache contains active item for key '{key}'.");
-                return true;
-            }
-            else
-            {
-                // Item expired, remove it
-                _cache.Remove(key);
-                Console.WriteLine($"Item with key '{key}' expired and removed during Contains check.");
-            }
-        }
-        Console.WriteLine($"Cache does not contain active item for key '{key}'.");
-        return false;
-    }
-
-    /// <summary>
-    /// Cleans up all expired items from the cache.
-    /// </summary>
-    public void CleanUpExpiredItems()
-    {
-        var expiredKeys = _cache.Where(kvp => kvp.Value.ExpirationTime <= DateTime.UtcNow)
-                                 .Select(kvp => kvp.Key)
-                                 .ToList();
-
-        foreach (var key in expiredKeys)
-        {
-            _cache.Remove(key);
-            Console.WriteLine($"Cleaned up expired item with key '{key}'.");
-        }
-        if (!expiredKeys.Any())
-        {
-            Console.WriteLine("No expired items to clean up.");
-        }
-    }
-
-    public int CountActiveItems()
-    {
-        CleanUpExpiredItems(); // Ensure only active items are counted
-        return _cache.Count;
+        Console.WriteLine($"Mixed derived value (Base: {Value}, Id: {Id})");
     }
 }
 
 /*
 // Example Usage:
-Console.WriteLine("\n--- Cache Example ---");
-var myCache = new Cache<string, string>(TimeSpan.FromSeconds(5)); // Default expiration of 5 seconds
+SpecificDerivedClass specific = new SpecificDerivedClass("hello");
+specific.DisplayValue();
+specific.DisplaySpecificValue();
+// Output:
+// Base value (String): hello
+// Specific derived value: HELLO
 
-myCache.Add("user:1", "Alice", TimeSpan.FromSeconds(10)); // Custom expiration
-myCache.Add("product:101", "Laptop"); // Default expiration
-myCache.Add("session:abc", "ActiveSessionData", TimeSpan.FromSeconds(2));
+GenericDerivedClass<int> genericDerived = new GenericDerivedClass<int>(123);
+genericDerived.DisplayValue();
+genericDerived.DisplayGenericDerivedValue();
+// Output:
+// Base value (Int32): 123
+// Generic derived value (Int32): 123
 
-Console.WriteLine($"Get user:1: {myCache.Get("user:1")}");
-Console.WriteLine($"Contains product:101: {myCache.Contains("product:101")}");
+MixedDerivedClass<Guid> mixedDerived = new MixedDerivedClass<Guid>("item", Guid.NewGuid());
+mixedDerived.DisplayValue();
+mixedDerived.DisplayMixedValue();
+// Output:
+// Base value (String): item
+// Mixed derived value (Base: item, Id: ...)
+*/
+#endregion
 
-System.Threading.Thread.Sleep(3000); // Wait for 3 seconds
+#region Q20: Complete Exercise - Create a generic Cache<TKey, TValue> with Add, Get, Remove, Contains, and expiration support.
+///*
+//This `Cache<TKey, TValue>` class provides a simple in-memory cache with basic operations and an expiration mechanism. It uses a `Dictionary` internally to store cache entries, where each entry includes the value and its expiration time.
+//*/
 
-Console.WriteLine($"Get session:abc after 3s: {myCache.Get("session:abc") ?? "(null)"}"); // Should be expired
-Console.WriteLine($"Contains session:abc after 3s: {myCache.Contains("session:abc")}");
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
 
-Console.WriteLine($"Get product:101 after 3s: {myCache.Get("product:101")}"); // Still active
+//public class Cache<TKey, TValue>
+//{
+//    private class CacheEntry
+//    {
+//        public TValue Value { get; set; }
+//        public DateTime ExpirationTime { get; set; }
+//    }
 
-myCache.Remove("user:1");
-Console.WriteLine($"Contains user:1 after removal: {myCache.Contains("user:1")}");
+//    private readonly Dictionary<TKey, CacheEntry> _cache = new Dictionary<TKey, CacheEntry>();
+//    private readonly TimeSpan _defaultExpiration;
+
+//    public Cache(TimeSpan defaultExpiration)
+//    {
+//        _defaultExpiration = defaultExpiration;
+//    }
+
+//    /// <summary>
+//    /// Adds an item to the cache with the default expiration.
+//    /// </summary>
+//    public void Add(TKey key, TValue value)
+//    {
+//        Add(key, value, _defaultExpiration);
+//    }
+
+//    /// <summary>
+//    /// Adds an item to the cache with a specified expiration duration.
+//    /// </summary>
+//    public void Add(TKey key, TValue value, TimeSpan duration)
+//    {
+//        var expirationTime = DateTime.UtcNow.Add(duration);
+//        _cache[key] = new CacheEntry { Value = value, ExpirationTime = expirationTime };
+//        Console.WriteLine($"Added item with key '{key}'. Expires at {expirationTime.ToLocalTime()}");
+//    }
+
+//    /// <summary>
+//    /// Retrieves an item from the cache. Returns default(TValue) if not found or expired.
+//    /// </summary>
+//    public TValue Get(TKey key)
+//    {
+//        if (_cache.TryGetValue(key, out var entry))
+//        {
+//            if (entry.ExpirationTime > DateTime.UtcNow)
+//            {
+//                Console.WriteLine($"Retrieved item with key '{key}'.");
+//                return entry.Value;
+//            }
+//            else
+//            {
+//                // Item expired, remove it
+//                _cache.Remove(key);
+//                Console.WriteLine($"Item with key '{key}' expired and removed.");
+//            }
+//        }
+//        Console.WriteLine($"Item with key '{key}' not found or already expired.");
+//        return default(TValue);
+//    }
+
+//    /// <summary>
+//    /// Removes an item from the cache.
+//    /// </summary>
+//    public bool Remove(TKey key)
+//    {
+//        if (_cache.Remove(key))
+//        {
+//            Console.WriteLine($"Removed item with key '{key}'.");
+//            return true;
+//        }
+//        Console.WriteLine($"Item with key '{key}' not found for removal.");
+//        return false;
+//    }
+
+//    /// <summary>
+//    /// Checks if the cache contains an active item for the given key.
+//    /// </summary>
+//    public bool Contains(TKey key)
+//    {
+//        if (_cache.TryGetValue(key, out var entry))
+//        {
+//            if (entry.ExpirationTime > DateTime.UtcNow)
+//            {
+//                Console.WriteLine($"Cache contains active item for key '{key}'.");
+//                return true;
+//            }
+//            else
+//            {
+//                // Item expired, remove it
+//                _cache.Remove(key);
+//                Console.WriteLine($"Item with key '{key}' expired and removed during Contains check.");
+//            }
+//        }
+//        Console.WriteLine($"Cache does not contain active item for key '{key}'.");
+//        return false;
+//    }
+
+//    /// <summary>
+//    /// Cleans up all expired items from the cache.
+//    /// </summary>
+//    public void CleanUpExpiredItems()
+//    {
+//        var expiredKeys = _cache.Where(kvp => kvp.Value.ExpirationTime <= DateTime.UtcNow)
+//                                 .Select(kvp => kvp.Key)
+//                                 .ToList();
+
+//        foreach (var key in expiredKeys)
+//        {
+//            _cache.Remove(key);
+//            Console.WriteLine($"Cleaned up expired item with key '{key}'.");
+//        }
+//        if (!expiredKeys.Any())
+//        {
+//            Console.WriteLine("No expired items to clean up.");
+//        }
+//    }
+
+//    public int CountActiveItems()
+//    {
+//        CleanUpExpiredItems(); // Ensure only active items are counted
+//        return _cache.Count;
+//    }
+//}
+
+///*
+//// Example Usage:
+//Console.WriteLine("\n--- Cache Example ---");
+//var myCache = new Cache<string, string>(TimeSpan.FromSeconds(5)); // Default expiration of 5 seconds
+
+//myCache.Add("user:1", "Alice", TimeSpan.FromSeconds(10)); // Custom expiration
+//myCache.Add("product:101", "Laptop"); // Default expiration
+//myCache.Add("session:abc", "ActiveSessionData", TimeSpan.FromSeconds(2));
+
+//Console.WriteLine($"Get user:1: {myCache.Get("user:1")}");
+//Console.WriteLine($"Contains product:101: {myCache.Contains("product:101")}");
+
+//System.Threading.Thread.Sleep(3000); // Wait for 3 seconds
+
+//Console.WriteLine($"Get session:abc after 3s: {myCache.Get("session:abc") ?? "(null)"}"); // Should be expired
+//Console.WriteLine($"Contains session:abc after 3s: {myCache.Contains("session:abc")}");
+
+//Console.WriteLine($"Get product:101 after 3s: {myCache.Get("product:101")}"); // Still active
+
+//myCache.Remove("user:1");
+//Console.WriteLine($"Contains user:1 after removal: {myCache.Contains("user:1")}");
 
 System.Threading.Thread.Sleep(3000); // Wait for another 3 seconds (total 6s)
 
