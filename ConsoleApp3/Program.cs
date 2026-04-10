@@ -340,69 +340,69 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q11: What is the base class constraint? Write an example.
-/*
-The **base class constraint** (`where T : MyBaseClass`) specifies that the type argument must be, or inherit from, the specified base class. This allows the generic type or method to access members (public, protected, internal) defined in the base class, ensuring that the type argument has a common set of functionalities or properties.
-*/
+///*
+//The **base class constraint** (`where T : MyBaseClass`) specifies that the type argument must be, or inherit from, the specified base class. This allows the generic type or method to access members (public, protected, internal) defined in the base class, ensuring that the type argument has a common set of functionalities or properties.
+//*/
 
-public abstract class Animal
-{
-    public string Name { get; set; }
-    public abstract void MakeSound();
-}
+//public abstract class Animal
+//{
+//    public string Name { get; set; }
+//    public abstract void MakeSound();
+//}
 
-public class Dog : Animal
-{
-    public Dog(string name) { Name = name; }
-    public override void MakeSound() { Console.WriteLine($"{Name} barks."); }
-}
+//public class Dog : Animal
+//{
+//    public Dog(string name) { Name = name; }
+//    public override void MakeSound() { Console.WriteLine($"{Name} barks."); }
+//}
 
-public class Cat : Animal
-{
-    public Cat(string name) { Name = name; }
-    public override void MakeSound() { Console.WriteLine($"{Name} meows."); }
-}
+//public class Cat : Animal
+//{
+//    public Cat(string name) { Name = name; }
+//    public override void MakeSound() { Console.WriteLine($"{Name} meows."); }
+//}
 
-public class AnimalShelter<T> where T : Animal
-{
-    private List<T> _animals = new List<T>();
+//public class AnimalShelter<T> where T : Animal
+//{
+//    private List<T> _animals = new List<T>();
 
-    public void AdmitAnimal(T animal)
-    {
-        _animals.Add(animal);
-        Console.WriteLine($"Admitted {animal.Name} to the shelter.");
-    }
+//    public void AdmitAnimal(T animal)
+//    {
+//        _animals.Add(animal);
+//        Console.WriteLine($"Admitted {animal.Name} to the shelter.");
+//    }
 
-    public void MakeAllSounds()
-    {
-        foreach (var animal in _animals)
-        {
-            animal.MakeSound();
-        }
-    }
-}
+//    public void MakeAllSounds()
+//    {
+//        foreach (var animal in _animals)
+//        {
+//            animal.MakeSound();
+//        }
+//    }
+//}
 
-/*
-// Example Usage:
-AnimalShelter<Dog> dogShelter = new AnimalShelter<Dog>();
-dogShelter.AdmitAnimal(new Dog("Buddy"));
-dogShelter.AdmitAnimal(new Dog("Lucy"));
-dogShelter.MakeAllSounds();
-// Output:
-// Admitted Buddy to the shelter.
-// Admitted Lucy to the shelter.
-// Buddy barks.
-// Lucy meows.
+///*
+//// Example Usage:
+//AnimalShelter<Dog> dogShelter = new AnimalShelter<Dog>();
+//dogShelter.AdmitAnimal(new Dog("Buddy"));
+//dogShelter.AdmitAnimal(new Dog("Lucy"));
+//dogShelter.MakeAllSounds();
+//// Output:
+//// Admitted Buddy to the shelter.
+//// Admitted Lucy to the shelter.
+//// Buddy barks.
+//// Lucy meows.
 
-AnimalShelter<Cat> catShelter = new AnimalShelter<Cat>();
-catShelter.AdmitAnimal(new Cat("Whiskers"));
-catShelter.MakeAllSounds();
-// Output:
-// Admitted Whiskers to the shelter.
-// Whiskers meows.
+//AnimalShelter<Cat> catShelter = new AnimalShelter<Cat>();
+//catShelter.AdmitAnimal(new Cat("Whiskers"));
+//catShelter.MakeAllSounds();
+//// Output:
+//// Admitted Whiskers to the shelter.
+//// Whiskers meows.
 
-// public class Rock { /* ... */ }
-// AnimalShelter<Rock> rockShelter = new AnimalShelter<Rock>(); // Compile-time error: 'Rock' must be a 'Animal' to use it as parameter 'T'
-*/
+//// public class Rock { /* ... */ }
+//// AnimalShelter<Rock> rockShelter = new AnimalShelter<Rock>(); // Compile-time error: 'Rock' must be a 'Animal' to use it as parameter 'T'
+//*/
 #endregion
 
 #region Q12: How do you apply multiple constraints? Write an example.
