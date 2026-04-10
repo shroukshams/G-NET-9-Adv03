@@ -123,68 +123,68 @@
 
 #region Q6: What is a generic interface? Write IRepository<T>.
 /*
-A **generic interface** is an interface that defines type parameters. This allows the interface to specify contracts that can be implemented by classes for various data types, promoting type-safe and reusable designs for common patterns like repositories, factories, or services.
-*/
+//A **generic interface** is an interface that defines type parameters. This allows the interface to specify contracts that can be implemented by classes for various data types, promoting type-safe and reusable designs for common patterns like repositories, factories, or services.
+//*/
 
-public interface IRepository<T>
-{
-    void Add(T entity);
-    void Update(T entity);
-    void Delete(T entity);
-    T GetById(int id);
-    IEnumerable<T> GetAll();
-}
+//public interface IRepository<T>
+//{
+//    void Add(T entity);
+//    void Update(T entity);
+//    void Delete(T entity);
+//    T GetById(int id);
+//    IEnumerable<T> GetAll();
+//}
 
-/*
-// Example Usage (implementation):
-public class Product
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-}
+///*
+//// Example Usage (implementation):
+//public class Product
+//{
+//    public int Id { get; set; }
+//    public string Name { get; set; }
+//    public decimal Price { get; set; }
+//}
 
-public class ProductRepository : IRepository<Product>
-{
-    private List<Product> _products = new List<Product>();
-    private int _nextId = 1;
+//public class ProductRepository : IRepository<Product>
+//{
+//    private List<Product> _products = new List<Product>();
+//    private int _nextId = 1;
 
-    public void Add(Product entity)
-    {
-        entity.Id = _nextId++;
-        _products.Add(entity);
-    }
+//    public void Add(Product entity)
+//    {
+//        entity.Id = _nextId++;
+//        _products.Add(entity);
+//    }
 
-    public void Update(Product entity)
-    {
-        var existingProduct = _products.FirstOrDefault(p => p.Id == entity.Id);
-        if (existingProduct != null)
-        {
-            existingProduct.Name = entity.Name;
-            existingProduct.Price = entity.Price;
-        }
-    }
+//    public void Update(Product entity)
+//    {
+//        var existingProduct = _products.FirstOrDefault(p => p.Id == entity.Id);
+//        if (existingProduct != null)
+//        {
+//            existingProduct.Name = entity.Name;
+//            existingProduct.Price = entity.Price;
+//        }
+//    }
 
-    public void Delete(Product entity)
-    {
-        _products.RemoveAll(p => p.Id == entity.Id);
-    }
+//    public void Delete(Product entity)
+//    {
+//        _products.RemoveAll(p => p.Id == entity.Id);
+//    }
 
-    public Product GetById(int id)
-    {
-        return _products.FirstOrDefault(p => p.Id == id);
-    }
+//    public Product GetById(int id)
+//    {
+//        return _products.FirstOrDefault(p => p.Id == id);
+//    }
 
-    public IEnumerable<Product> GetAll()
-    {
-        return _products;
-    }
-}
+//    public IEnumerable<Product> GetAll()
+//    {
+//        return _products;
+//    }
+//}
 
-// Usage of ProductRepository:
-// IRepository<Product> productRepo = new ProductRepository();
-// productRepo.Add(new Product { Name = "Laptop", Price = 1200m });
-// var laptop = productRepo.GetById(1);
+//// Usage of ProductRepository:
+//// IRepository<Product> productRepo = new ProductRepository();
+//// productRepo.Add(new Product { Name = "Laptop", Price = 1200m });
+//// var laptop = productRepo.GetById(1);
 */
 #endregion
 
