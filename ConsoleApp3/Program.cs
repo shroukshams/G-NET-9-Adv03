@@ -459,33 +459,33 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q13: What does the 'default' keyword do in generics?
-/*
-The **`default` keyword** in generics provides the default value for a type parameter `T`. Its behavior depends on whether `T` is a value type or a reference type:
+///*
+//The **`default` keyword** in generics provides the default value for a type parameter `T`. Its behavior depends on whether `T` is a value type or a reference type:
 
-*   For **value types** (e.g., `int`, `struct`), `default(T)` returns the default value for that type (e.g., `0` for `int`, `false` for `bool`, or an all-zero initialized struct).
-*   For **reference types** (e.g., `class`, `interface`), `default(T)` returns `null`.
+//*   For **value types** (e.g., `int`, `struct`), `default(T)` returns the default value for that type (e.g., `0` for `int`, `false` for `bool`, or an all-zero initialized struct).
+//*   For **reference types** (e.g., `class`, `interface`), `default(T)` returns `null`.
 
-This is particularly useful when you need to initialize a generic type variable or return a default value without knowing the specific type at compile time, ensuring type safety and avoiding uninitialized variables.
-*/
+//This is particularly useful when you need to initialize a generic type variable or return a default value without knowing the specific type at compile time, ensuring type safety and avoiding uninitialized variables.
+//*/
 
-public class DefaultValueExample
-{
-    public static T GetDefaultValue<T>()
-    {
-        return default(T);
-    }
-}
+//public class DefaultValueExample
+//{
+//    public static T GetDefaultValue<T>()
+//    {
+//        return default(T);
+//    }
+//}
 
-/*
-// Example Usage:
-int defaultInt = DefaultValueExample.GetDefaultValue<int>();       // 0
-string defaultString = DefaultValueExample.GetDefaultValue<string>(); // null
-bool defaultBool = DefaultValueExample.GetDefaultValue<bool>();     // false
+///*
+//// Example Usage:
+//int defaultInt = DefaultValueExample.GetDefaultValue<int>();       // 0
+//string defaultString = DefaultValueExample.GetDefaultValue<string>(); // null
+//bool defaultBool = DefaultValueExample.GetDefaultValue<bool>();     // false
 
-Console.WriteLine($"Default int: {defaultInt}");
-Console.WriteLine($"Default string: {defaultString ?? "(null)"}");
-Console.WriteLine($"Default bool: {defaultBool}");
-*/
+//Console.WriteLine($"Default int: {defaultInt}");
+//Console.WriteLine($"Default string: {defaultString ?? "(null)"}");
+//Console.WriteLine($"Default bool: {defaultBool}");
+//*/
 #endregion
 
 #region Q14: Write a SafeList<T> that returns default when the index is invalid.
