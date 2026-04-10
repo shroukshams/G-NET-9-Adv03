@@ -12,31 +12,31 @@
 #endregion
 
 #region Q2: Write a generic class Container<T> with Add and Get methods.
-public class Container<T>
-{
-    private T _item;
+//public class Container<T>
+//{
+//    private T _item;
 
-    public void Add(T item)
-    {
-        _item = item;
-    }
+//    public void Add(T item)
+//    {
+//        _item = item;
+//    }
 
-    public T Get()
-    {
-        return _item;
-    }
-}
+//    public T Get()
+//    {
+//        return _item;
+//    }
+//}
 
-/*
-// Example Usage:
-Container<string> stringContainer = new Container<string>();
-stringContainer.Add("Hello Generics");
-string message = stringContainer.Get(); // message is "Hello Generics"
+///*
+//// Example Usage:
+//Container<string> stringContainer = new Container<string>();
+//stringContainer.Add("Hello Generics");
+//string message = stringContainer.Get(); // message is "Hello Generics"
 
-Container<int> intContainer = new Container<int>();
-intContainer.Add(123);
-int number = intContainer.Get(); // number is 123
-*/
+//Container<int> intContainer = new Container<int>();
+//intContainer.Add(123);
+//int number = intContainer.Get(); // number is 123
+//*/
 #endregion
 
 #region Q3: What are multiple type parameters? Write Pair<TKey, TValue>.
