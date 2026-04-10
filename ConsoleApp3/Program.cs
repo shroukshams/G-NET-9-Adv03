@@ -67,32 +67,32 @@
 #endregion
 
 #region Q4: What is a generic method? Write Swap<T> method.
-/*
-A **generic method** is a method declared with type parameters, allowing it to be invoked with arguments of different types. The type parameters are specified when the method is called, making the method reusable across various data types without needing to overload it for each specific type.
-*/
+///*
+//A **generic method** is a method declared with type parameters, allowing it to be invoked with arguments of different types. The type parameters are specified when the method is called, making the method reusable across various data types without needing to overload it for each specific type.
+//*/
 
-public class GenericMethods
-{
-    public static void Swap<T>(ref T a, ref T b)
-    {
-        T temp = a;
-        a = b;
-        b = temp;
-    }
-}
+//public class GenericMethods
+//{
+//    public static void Swap<T>(ref T a, ref T b)
+//    {
+//        T temp = a;
+//        a = b;
+//        b = temp;
+//    }
+//}
 
-/*
-// Example Usage:
-int x = 10, y = 20;
-Console.WriteLine($"Before Swap: x = {x}, y = {y}"); // Output: Before Swap: x = 10, y = 20
-GenericMethods.Swap(ref x, ref y);
-Console.WriteLine($"After Swap: x = {x}, y = {y}");  // Output: After Swap: x = 20, y = 10
+///*
+//// Example Usage:
+//int x = 10, y = 20;
+//Console.WriteLine($"Before Swap: x = {x}, y = {y}"); // Output: Before Swap: x = 10, y = 20
+//GenericMethods.Swap(ref x, ref y);
+//Console.WriteLine($"After Swap: x = {x}, y = {y}");  // Output: After Swap: x = 20, y = 10
 
-string s1 = "Hello", s2 = "World";
-Console.WriteLine($"Before Swap: s1 = {s1}, s2 = {s2}"); // Output: Before Swap: s1 = Hello, s2 = World
-GenericMethods.Swap(ref s1, ref s2);
-Console.WriteLine($"After Swap: s1 = {s1}, s2 = {s2}");  // Output: After Swap: s1 = World, s2 = Hello
-*/
+//string s1 = "Hello", s2 = "World";
+//Console.WriteLine($"Before Swap: s1 = {s1}, s2 = {s2}"); // Output: Before Swap: s1 = Hello, s2 = World
+//GenericMethods.Swap(ref s1, ref s2);
+//Console.WriteLine($"After Swap: s1 = {s1}, s2 = {s2}");  // Output: After Swap: s1 = World, s2 = Hello
+//*/
 #endregion
 
 #region Q5: Write a generic method FindMax<T> that finds maximum value
