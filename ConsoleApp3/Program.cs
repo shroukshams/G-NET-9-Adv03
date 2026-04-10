@@ -489,48 +489,48 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q14: Write a SafeList<T> that returns default when the index is invalid.
-/*
-This `SafeList<T>` class demonstrates the use of `default(T)` to provide a safe way to access elements. If an invalid index is provided, it returns the default value for the type `T` instead of throwing an `IndexOutOfRangeException`.
-*/
+///*
+//This `SafeList<T>` class demonstrates the use of `default(T)` to provide a safe way to access elements. If an invalid index is provided, it returns the default value for the type `T` instead of throwing an `IndexOutOfRangeException`.
+//*/
 
-using System.Collections.Generic;
+//using System.Collections.Generic;
 
-public class SafeList<T>
-{
-    private List<T> _list = new List<T>();
+//public class SafeList<T>
+//{
+//    private List<T> _list = new List<T>();
 
-    public void Add(T item)
-    {
-        _list.Add(item);
-    }
+//    public void Add(T item)
+//    {
+//        _list.Add(item);
+//    }
 
-    public T Get(int index)
-    {
-        if (index >= 0 && index < _list.Count)
-        {
-            return _list[index];
-        }
-        return default(T); // Returns default value for T if index is invalid
-    }
+//    public T Get(int index)
+//    {
+//        if (index >= 0 && index < _list.Count)
+//        {
+//            return _list[index];
+//        }
+//        return default(T); // Returns default value for T if index is invalid
+//    }
 
-    public int Count => _list.Count;
-}
+//    public int Count => _list.Count;
+//}
 
-/*
-// Example Usage:
-SafeList<string> names = new SafeList<string>();
-names.Add("Alice");
-names.Add("Bob");
+///*
+//// Example Usage:
+//SafeList<string> names = new SafeList<string>();
+//names.Add("Alice");
+//names.Add("Bob");
 
-Console.WriteLine($"Name at index 0: {names.Get(0)}"); // Output: Name at index 0: Alice
-Console.WriteLine($"Name at index 1: {names.Get(1)}"); // Output: Name at index 1: Bob
-Console.WriteLine($"Name at index 2 (invalid): {names.Get(2) ?? "(null)"}"); // Output: Name at index 2 (invalid): (null)
+//Console.WriteLine($"Name at index 0: {names.Get(0)}"); // Output: Name at index 0: Alice
+//Console.WriteLine($"Name at index 1: {names.Get(1)}"); // Output: Name at index 1: Bob
+//Console.WriteLine($"Name at index 2 (invalid): {names.Get(2) ?? "(null)"}"); // Output: Name at index 2 (invalid): (null)
 
-SafeList<int> numbers = new SafeList<int>();
-numbers.Add(10);
-Console.WriteLine($"Number at index 0: {numbers.Get(0)}"); // Output: Number at index 0: 10
-Console.WriteLine($"Number at index 1 (invalid): {numbers.Get(1)}"); // Output: Number at index 1 (invalid): 0
-*/
+//SafeList<int> numbers = new SafeList<int>();
+//numbers.Add(10);
+//Console.WriteLine($"Number at index 0: {numbers.Get(0)}"); // Output: Number at index 0: 10
+//Console.WriteLine($"Number at index 1 (invalid): {numbers.Get(1)}"); // Output: Number at index 1 (invalid): 0
+//*/
 #endregion
 
 #region Q15: What is covariance? Explain the 'out' keyword.
