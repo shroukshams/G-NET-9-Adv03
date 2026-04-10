@@ -40,30 +40,30 @@
 #endregion
 
 #region Q3: What are multiple type parameters? Write Pair<TKey, TValue>.
-/*
-**Multiple type parameters** allow a generic type or method to work with more than one placeholder type. Each type parameter is specified independently, enabling the generic construct to handle relationships between different types.
-*/
+///*
+//**Multiple type parameters** allow a generic type or method to work with more than one placeholder type. Each type parameter is specified independently, enabling the generic construct to handle relationships between different types.
+//*/
 
-public class Pair<TKey, TValue>
-{
-    public TKey Key { get; set; }
-    public TValue Value { get; set; }
+//public class Pair<TKey, TValue>
+//{
+//    public TKey Key { get; set; }
+//    public TValue Value { get; set; }
 
-    public Pair(TKey key, TValue value)
-    {
-        Key = key;
-        Value = value;
-    }
-}
+//    public Pair(TKey key, TValue value)
+//    {
+//        Key = key;
+//        Value = value;
+//    }
+//}
 
-/*
-// Example Usage:
-Pair<string, int> studentGrade = new Pair<string, int>("Alice", 95);
-Console.WriteLine($"Student: {studentGrade.Key}, Grade: {studentGrade.Value}");
+///*
+//// Example Usage:
+//Pair<string, int> studentGrade = new Pair<string, int>("Alice", 95);
+//Console.WriteLine($"Student: {studentGrade.Key}, Grade: {studentGrade.Value}");
 
-Pair<Guid, string> userSession = new Pair<Guid, string>(Guid.NewGuid(), "Active");
-Console.WriteLine($"Session ID: {userSession.Key}, Status: {userSession.Value}");
-*/
+//Pair<Guid, string> userSession = new Pair<Guid, string>(Guid.NewGuid(), "Active");
+//Console.WriteLine($"Session ID: {userSession.Key}, Status: {userSession.Value}");
+//*/
 #endregion
 
 #region Q4: What is a generic method? Write Swap<T> method.
