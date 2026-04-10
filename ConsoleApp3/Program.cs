@@ -406,56 +406,56 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q12: How do you apply multiple constraints? Write an example.
-/*
-Multiple constraints can be applied to a single type parameter by listing them after the `where` keyword, separated by commas. This allows for more specific requirements on the type argument, combining the functionalities or characteristics of several constraints.
+///*
+//Multiple constraints can be applied to a single type parameter by listing them after the `where` keyword, separated by commas. This allows for more specific requirements on the type argument, combining the functionalities or characteristics of several constraints.
 
-**Order of constraints:**
-1.  The base class constraint (if any) must be specified first.
-2.  Interface constraints can follow in any order.
-3.  The `new()` constraint (if any) must be specified last.
-4.  `struct` or `class` constraints are mutually exclusive and cannot be combined with a base class constraint (as a base class is implicitly a reference type, and `struct` is a value type).
-*/
+//**Order of constraints:**
+//1.  The base class constraint (if any) must be specified first.
+//2.  Interface constraints can follow in any order.
+//3.  The `new()` constraint (if any) must be specified last.
+//4.  `struct` or `class` constraints are mutually exclusive and cannot be combined with a base class constraint (as a base class is implicitly a reference type, and `struct` is a value type).
+//*/
 
-public interface IIdentifiable
-{
-    int Id { get; }
-}
+//public interface IIdentifiable
+//{
+//    int Id { get; }
+//}
 
-public interface IAuditable
-{
-    DateTime CreatedDate { get; set; }
-}
+//public interface IAuditable
+//{
+//    DateTime CreatedDate { get; set; }
+//}
 
-public class Entity : IIdentifiable, IAuditable
-{
-    public int Id { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public string Name { get; set; }
+//public class Entity : IIdentifiable, IAuditable
+//{
+//    public int Id { get; set; }
+//    public DateTime CreatedDate { get; set; }
+//    public string Name { get; set; }
 
-    public Entity() { CreatedDate = DateTime.Now; }
-}
+//    public Entity() { CreatedDate = DateTime.Now; }
+//}
 
-public class DataProcessor<T> where T : Entity, IIdentifiable, IAuditable, new()
-{
-    public T CreateAndProcess(int id, string name)
-    {
-        T item = new T(); // Requires new() constraint
-        item.Id = id;
-        item.Name = name;
-        // item.CreatedDate is set by constructor, but also accessible due to IAuditable
-        Console.WriteLine($"Processing entity: Id={item.Id}, Name={item.Name}, Created={item.CreatedDate}");
-        return item;
-    }
-}
+//public class DataProcessor<T> where T : Entity, IIdentifiable, IAuditable, new()
+//{
+//    public T CreateAndProcess(int id, string name)
+//    {
+//        T item = new T(); // Requires new() constraint
+//        item.Id = id;
+//        item.Name = name;
+//        // item.CreatedDate is set by constructor, but also accessible due to IAuditable
+//        Console.WriteLine($"Processing entity: Id={item.Id}, Name={item.Name}, Created={item.CreatedDate}");
+//        return item;
+//    }
+//}
 
-/*
-// Example Usage:
-DataProcessor<Entity> processor = new DataProcessor<Entity>();
-Entity myEntity = processor.CreateAndProcess(1, "Sample Item");
-// Output: Processing entity: Id=1, Name=Sample Item, Created=...
+///*
+//// Example Usage:
+//DataProcessor<Entity> processor = new DataProcessor<Entity>();
+//Entity myEntity = processor.CreateAndProcess(1, "Sample Item");
+//// Output: Processing entity: Id=1, Name=Sample Item, Created=...
 
-// If Entity did not implement IIdentifiable, IAuditable, or have a parameterless constructor, this would be a compile-time error.
-*/
+//// If Entity did not implement IIdentifiable, IAuditable, or have a parameterless constructor, this would be a compile-time error.
+//*/
 #endregion
 
 #region Q13: What does the 'default' keyword do in generics?
