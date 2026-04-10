@@ -1,14 +1,14 @@
 ﻿
 #region Q1: What is a generic class? Why use generics?
-/*
-A **generic class** is a class that can operate on data of any type, specified at the time of its instantiation. Instead of being tied to a specific data type (like `int` or `string`), a generic class uses a **type parameter** (e.g., `T`) as a placeholder for the actual data type. This allows the class to be reusable with different types without requiring separate implementations for each type.
+///*
+//A **generic class** is a class that can operate on data of any type, specified at the time of its instantiation. Instead of being tied to a specific data type (like `int` or `string`), a generic class uses a **type parameter** (e.g., `T`) as a placeholder for the actual data type. This allows the class to be reusable with different types without requiring separate implementations for each type.
 
-**Why use generics?**
-1.  **Type Safety:** Generics provide type safety without the overhead of casting or the risk of runtime type errors. The compiler enforces type constraints at compile time, catching errors early.
-2.  **Code Reusability:** You can write a single class or method definition that works with various data types, reducing code duplication and making your codebase more maintainable.
-3.  **Performance:** Generics avoid boxing and unboxing operations that occur when using non-generic collections with value types (e.g., `ArrayList` storing `int`s). This leads to better performance and reduced memory allocation.
-4.  **Clarity and Readability:** Code becomes more readable as the intent of working with a specific type is clear, and explicit casting is often eliminated.
-*/
+//**Why use generics?**
+//1.  **Type Safety:** Generics provide type safety without the overhead of casting or the risk of runtime type errors. The compiler enforces type constraints at compile time, catching errors early.
+//2.  **Code Reusability:** You can write a single class or method definition that works with various data types, reducing code duplication and making your codebase more maintainable.
+//3.  **Performance:** Generics avoid boxing and unboxing operations that occur when using non-generic collections with value types (e.g., `ArrayList` storing `int`s). This leads to better performance and reduced memory allocation.
+//4.  **Clarity and Readability:** Code becomes more readable as the intent of working with a specific type is clear, and explicit casting is often eliminated.
+//*/
 #endregion
 
 #region Q2: Write a generic class Container<T> with Add and Get methods.
