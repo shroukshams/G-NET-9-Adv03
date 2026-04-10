@@ -96,29 +96,29 @@
 #endregion
 
 #region Q5: Write a generic method FindMax<T> that finds maximum value
-/*
-To find the maximum value, the type `T` must be comparable. This is achieved by applying a constraint that `T` must implement the `IComparable<T>` interface.
-*/
+///*
+//To find the maximum value, the type `T` must be comparable. This is achieved by applying a constraint that `T` must implement the `IComparable<T>` interface.
+//*/
 
-public class MathOperations
-{
-    public static T FindMax<T>(T a, T b) where T : IComparable<T>
-    {
-        return a.CompareTo(b) > 0 ? a : b;
-    }
-}
+//public class MathOperations
+//{
+//    public static T FindMax<T>(T a, T b) where T : IComparable<T>
+//    {
+//        return a.CompareTo(b) > 0 ? a : b;
+//    }
+//}
 
-/*
-// Example Usage:
-int maxInt = MathOperations.FindMax(5, 10); // maxInt is 10
-Console.WriteLine($"Max Int: {maxInt}");
+///*
+//// Example Usage:
+//int maxInt = MathOperations.FindMax(5, 10); // maxInt is 10
+//Console.WriteLine($"Max Int: {maxInt}");
 
-double maxDouble = MathOperations.FindMax(3.14, 2.71); // maxDouble is 3.14
-Console.WriteLine($"Max Double: {maxDouble}");
+//double maxDouble = MathOperations.FindMax(3.14, 2.71); // maxDouble is 3.14
+//Console.WriteLine($"Max Double: {maxDouble}");
 
-string maxString = MathOperations.FindMax("Apple", "Banana"); // maxString is "Banana"
-Console.WriteLine($"Max String: {maxString}");
-*/
+//string maxString = MathOperations.FindMax("Apple", "Banana"); // maxString is "Banana"
+//Console.WriteLine($"Max String: {maxString}");
+//*/
 #endregion
 
 #region Q6: What is a generic interface? Write IRepository<T>.
