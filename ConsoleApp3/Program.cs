@@ -636,38 +636,38 @@ In essence, **covariance** allows you to use a more specific type where a less s
 #endregion
 
 #region Q18: How do static members work in generic types?
-/*
-**Static members in generic types** are unique for each closed constructed type. This means that if you have a generic class `MyGenericClass<T>`, `MyGenericClass<int>.StaticField` is a completely separate field from `MyGenericClass<string>.StaticField`.
+///*
+//**Static members in generic types** are unique for each closed constructed type. This means that if you have a generic class `MyGenericClass<T>`, `MyGenericClass<int>.StaticField` is a completely separate field from `MyGenericClass<string>.StaticField`.
 
-Each unique combination of type arguments creates a distinct static member. This is different from non-generic classes where static members are shared across all instances of the class.
-*/
+//Each unique combination of type arguments creates a distinct static member. This is different from non-generic classes where static members are shared across all instances of the class.
+//*/
 
-public class GenericStaticExample<T>
-{
-    public static int Counter { get; set; }
+//public class GenericStaticExample<T>
+//{
+//    public static int Counter { get; set; }
 
-    public GenericStaticExample()
-    {
-        Counter++;
-    }
+//    public GenericStaticExample()
+//    {
+//        Counter++;
+//    }
 
-    public static void DisplayCounter()
-    {
-        Console.WriteLine($"Counter for {typeof(T).Name}: {Counter}");
-    }
-}
+//    public static void DisplayCounter()
+//    {
+//        Console.WriteLine($"Counter for {typeof(T).Name}: {Counter}");
+//    }
+//}
 
-/*
-// Example Usage:
-new GenericStaticExample<int>();
-new GenericStaticExample<int>();
-GenericStaticExample<int>.DisplayCounter(); // Output: Counter for Int32: 2
+///*
+//// Example Usage:
+//new GenericStaticExample<int>();
+//new GenericStaticExample<int>();
+//GenericStaticExample<int>.DisplayCounter(); // Output: Counter for Int32: 2
 
-new GenericStaticExample<string>();
-GenericStaticExample<string>.DisplayCounter(); // Output: Counter for String: 1
+//new GenericStaticExample<string>();
+//GenericStaticExample<string>.DisplayCounter(); // Output: Counter for String: 1
 
-GenericStaticExample<int>.DisplayCounter(); // Output: Counter for Int32: 2 (still 2, not affected by string instance)
-*/
+//GenericStaticExample<int>.DisplayCounter(); // Output: Counter for Int32: 2 (still 2, not affected by string instance)
+//*/
 #endregion
 
 #region Q19: How can you inherit from a generic class?
