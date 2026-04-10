@@ -671,15 +671,15 @@ In essence, **covariance** allows you to use a more specific type where a less s
 #endregion
 
 #region Q19: How can you inherit from a generic class?
-/*
-You can inherit from a generic class in a few ways:
+///*
+//You can inherit from a generic class in a few ways:
 
-1.  **By providing concrete type arguments:** The derived class is no longer generic.
-2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
-3.  **By combining concrete types and its own type parameters.**
+//1.  **By providing concrete type arguments:** The derived class is no longer generic.
+//2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
+//3.  **By combining concrete types and its own type parameters.**
 
-When inheriting, the base class's generic type parameters must be satisfied.
-*/
+//When inheriting, the base class's generic type parameters must be satisfied.
+//*/
 
 // Base generic class
 public class BaseGenericClass<T>
