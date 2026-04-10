@@ -287,56 +287,56 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q10: What is the interface constraint? Write an example.
-/*
-The **interface constraint** (`where T : IMyInterface`) specifies that the type argument must implement the specified interface (or inherit from the specified class). This allows the generic type or method to access members defined by that interface, ensuring that the type argument provides certain functionalities.
-*/
+///*
+//The **interface constraint** (`where T : IMyInterface`) specifies that the type argument must implement the specified interface (or inherit from the specified class). This allows the generic type or method to access members defined by that interface, ensuring that the type argument provides certain functionalities.
+//*/
 
-public interface ILoggable
-{
-    void LogMessage(string message);
-}
+//public interface ILoggable
+//{
+//    void LogMessage(string message);
+//}
 
-public class Logger<T> where T : ILoggable
-{
-    public void Log(T item, string message)
-    {
-        item.LogMessage($"Logging for {typeof(T).Name}: {message}");
-    }
-}
+//public class Logger<T> where T : ILoggable
+//{
+//    public void Log(T item, string message)
+//    {
+//        item.LogMessage($"Logging for {typeof(T).Name}: {message}");
+//    }
+//}
 
-public class Event : ILoggable
-{
-    public string Description { get; set; }
-    public void LogMessage(string message)
-    {
-        Console.WriteLine($"Event Log: {message} - Description: {Description}");
-    }
-}
+//public class Event : ILoggable
+//{
+//    public string Description { get; set; }
+//    public void LogMessage(string message)
+//    {
+//        Console.WriteLine($"Event Log: {message} - Description: {Description}");
+//    }
+//}
 
-public class TaskItem : ILoggable
-{
-    public string Title { get; set; }
-    public void LogMessage(string message)
-    {
-        Console.WriteLine($"Task Log: {message} - Title: {Title}");
-    }
-}
+//public class TaskItem : ILoggable
+//{
+//    public string Title { get; set; }
+//    public void LogMessage(string message)
+//    {
+//        Console.WriteLine($"Task Log: {message} - Title: {Title}");
+//    }
+//}
 
-/*
-// Example Usage:
-Logger<Event> eventLogger = new Logger<Event>();
-Event myEvent = new Event { Description = "User Login" };
-eventLogger.Log(myEvent, "Successful login attempt.");
-// Output: Event Log: Logging for Event: Successful login attempt. - Description: User Login
+///*
+//// Example Usage:
+//Logger<Event> eventLogger = new Logger<Event>();
+//Event myEvent = new Event { Description = "User Login" };
+//eventLogger.Log(myEvent, "Successful login attempt.");
+//// Output: Event Log: Logging for Event: Successful login attempt. - Description: User Login
 
-Logger<TaskItem> taskLogger = new Logger<TaskItem>();
-TaskItem myTask = new TaskItem { Title = "Complete Report" };
-taskLogger.Log(myTask, "Task started.");
-// Output: Task Log: Logging for TaskItem: Task started. - Title: Complete Report
+//Logger<TaskItem> taskLogger = new Logger<TaskItem>();
+//TaskItem myTask = new TaskItem { Title = "Complete Report" };
+//taskLogger.Log(myTask, "Task started.");
+//// Output: Task Log: Logging for TaskItem: Task started. - Title: Complete Report
 
-// public class SimpleClass { /* ... */ }
-// Logger<SimpleClass> simpleLogger = new Logger<SimpleClass>(); // Compile-time error: 'SimpleClass' does not implement 'ILoggable'
-*/
+//// public class SimpleClass { /* ... */ }
+//// Logger<SimpleClass> simpleLogger = new Logger<SimpleClass>(); // Compile-time error: 'SimpleClass' does not implement 'ILoggable'
+//*/
 #endregion
 
 #region Q11: What is the base class constraint? Write an example.
