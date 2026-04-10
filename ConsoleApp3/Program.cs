@@ -534,53 +534,53 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q15: What is covariance? Explain the 'out' keyword.
-/*
-**Covariance** allows a generic type parameter to be assigned a more derived type than that specified by the generic. In C#, covariance applies to generic interfaces and delegates, specifically when the type parameter is used only as a return type (output) from the interface or delegate's methods.
+/////*
+////**Covariance** allows a generic type parameter to be assigned a more derived type than that specified by the generic. In C#, covariance applies to generic interfaces and delegates, specifically when the type parameter is used only as a return type (output) from the interface or delegate's methods.
 
-The **`out` keyword** is used to mark a generic type parameter as covariant. This means that if you have a generic interface `IProducer<out T>`, and `Derived` inherits from `Base`, then `IProducer<Derived>` can be implicitly converted to `IProducer<Base>`. The `out` keyword ensures that `T` can only appear in 
-an "out" position (e.g., as a method return type, but not as a method argument).
-*/
+////The **`out` keyword** is used to mark a generic type parameter as covariant. This means that if you have a generic interface `IProducer<out T>`, and `Derived` inherits from `Base`, then `IProducer<Derived>` can be implicitly converted to `IProducer<Base>`. The `out` keyword ensures that `T` can only appear in 
+////an "out" position (e.g., as a method return type, but not as a method argument).
+////*/
 
-public class Animal { public string Name { get; set; } }
-public class Dog : Animal { }
+////public class Animal { public string Name { get; set; } }
+////public class Dog : Animal { }
 
-public interface IReadOnlyListCovariant<out T>
-{
-    T GetItem(int index);
-    int Count { get; }
-}
+////public interface IReadOnlyListCovariant<out T>
+////{
+////    T GetItem(int index);
+////    int Count { get; }
+////}
 
-public class DogList : IReadOnlyListCovariant<Dog>
-{
-    private List<Dog> _dogs = new List<Dog>();
+////public class DogList : IReadOnlyListCovariant<Dog>
+////{
+////    private List<Dog> _dogs = new List<Dog>();
 
-    public DogList(IEnumerable<Dog> dogs)
-    {
-        _dogs.AddRange(dogs);
-    }
+////    public DogList(IEnumerable<Dog> dogs)
+////    {
+////        _dogs.AddRange(dogs);
+////    }
 
-    public Dog GetItem(int index)
-    {
-        if (index >= 0 && index < _dogs.Count)
-        {
-            return _dogs[index];
-        }
-        return null;
-    }
+////    public Dog GetItem(int index)
+////    {
+////        if (index >= 0 && index < _dogs.Count)
+////        {
+////            return _dogs[index];
+////        }
+////        return null;
+////    }
 
-    public int Count => _dogs.Count;
-}
+////    public int Count => _dogs.Count;
+////}
 
-/*
-// Example Usage:
-Dog[] dogs = { new Dog { Name = "Buddy" }, new Dog { Name = "Lucy" } };
-IReadOnlyListCovariant<Dog> dogList = new DogList(dogs);
+/////*
+////// Example Usage:
+////Dog[] dogs = { new Dog { Name = "Buddy" }, new Dog { Name = "Lucy" } };
+////IReadOnlyListCovariant<Dog> dogList = new DogList(dogs);
 
-// Covariance in action: IReadOnlyListCovariant<Dog> can be assigned to IReadOnlyListCovariant<Animal>
-IReadOnlyListCovariant<Animal> animalList = dogList;
+////// Covariance in action: IReadOnlyListCovariant<Dog> can be assigned to IReadOnlyListCovariant<Animal>
+////IReadOnlyListCovariant<Animal> animalList = dogList;
 
-Console.WriteLine($"First animal in list: {animalList.GetItem(0).Name}"); // Output: First animal in list: Buddy
-*/
+////Console.WriteLine($"First animal in list: {animalList.GetItem(0).Name}"); // Output: First animal in list: Buddy
+////*/
 #endregion
 
 #region Q16: What is contravariance? Explain the 'in' keyword.
