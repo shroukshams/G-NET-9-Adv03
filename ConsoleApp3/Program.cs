@@ -671,93 +671,93 @@ In essence, **covariance** allows you to use a more specific type where a less s
 #endregion
 
 #region Q19: How can you inherit from a generic class?
+/////*
+////You can inherit from a generic class in a few ways:
+
+////1.  **By providing concrete type arguments:** The derived class is no longer generic.
+////2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
+////3.  **By combining concrete types and its own type parameters.**
+
+////When inheriting, the base class's generic type parameters must be satisfied.
+////*/
+
+//// Base generic class
+//public class BaseGenericClass<T>
+//{
+//    public T Value { get; set; }
+
+//    public BaseGenericClass(T value)
+//    {
+//        Value = value;
+//    }
+
+//    public void DisplayValue()
+//    {
+//        Console.WriteLine($"Base value ({typeof(T).Name}): {Value}");
+//    }
+//}
+
+//// 1. Derived class with concrete type argument
+//public class SpecificDerivedClass : BaseGenericClass<string>
+//{
+//    public SpecificDerivedClass(string value) : base(value) { }
+
+//    public void DisplaySpecificValue()
+//    {
+//        Console.WriteLine($"Specific derived value: {Value.ToUpper()}");
+//    }
+//}
+
+//// 2. Derived class passing its own type parameter
+//public class GenericDerivedClass<T> : BaseGenericClass<T>
+//{
+//    public GenericDerivedClass(T value) : base(value) { }
+
+//    public void DisplayGenericDerivedValue()
+//    {
+//        Console.WriteLine($"Generic derived value ({typeof(T).Name}): {Value}");
+//    }
+//}
+
+//// 3. Derived class with its own type parameter and a concrete type for the base
+//public class MixedDerivedClass<TId> : BaseGenericClass<string>
+//{
+//    public TId Id { get; set; }
+
+//    public MixedDerivedClass(string value, TId id) : base(value)
+//    {
+//        Id = id;
+//    }
+
+//    public void DisplayMixedValue()
+//    {
+//        Console.WriteLine($"Mixed derived value (Base: {Value}, Id: {Id})");
+//    }
+//}
+
 ///*
-//You can inherit from a generic class in a few ways:
+//// Example Usage:
+//SpecificDerivedClass specific = new SpecificDerivedClass("hello");
+//specific.DisplayValue();
+//specific.DisplaySpecificValue();
+//// Output:
+//// Base value (String): hello
+//// Specific derived value: HELLO
 
-//1.  **By providing concrete type arguments:** The derived class is no longer generic.
-//2.  **By passing its own type parameters to the base generic class:** The derived class remains generic.
-//3.  **By combining concrete types and its own type parameters.**
+//GenericDerivedClass<int> genericDerived = new GenericDerivedClass<int>(123);
+//genericDerived.DisplayValue();
+//genericDerived.DisplayGenericDerivedValue();
+//// Output:
+//// Base value (Int32): 123
+//// Generic derived value (Int32): 123
 
-//When inheriting, the base class's generic type parameters must be satisfied.
+//MixedDerivedClass<Guid> mixedDerived = new MixedDerivedClass<Guid>("item", Guid.NewGuid());
+//mixedDerived.DisplayValue();
+//mixedDerived.DisplayMixedValue();
+//// Output:
+//// Base value (String): item
+//// Mixed derived value (Base: item, Id: ...)
 //*/
-
-// Base generic class
-public class BaseGenericClass<T>
-{
-    public T Value { get; set; }
-
-    public BaseGenericClass(T value)
-    {
-        Value = value;
-    }
-
-    public void DisplayValue()
-    {
-        Console.WriteLine($"Base value ({typeof(T).Name}): {Value}");
-    }
-}
-
-// 1. Derived class with concrete type argument
-public class SpecificDerivedClass : BaseGenericClass<string>
-{
-    public SpecificDerivedClass(string value) : base(value) { }
-
-    public void DisplaySpecificValue()
-    {
-        Console.WriteLine($"Specific derived value: {Value.ToUpper()}");
-    }
-}
-
-// 2. Derived class passing its own type parameter
-public class GenericDerivedClass<T> : BaseGenericClass<T>
-{
-    public GenericDerivedClass(T value) : base(value) { }
-
-    public void DisplayGenericDerivedValue()
-    {
-        Console.WriteLine($"Generic derived value ({typeof(T).Name}): {Value}");
-    }
-}
-
-// 3. Derived class with its own type parameter and a concrete type for the base
-public class MixedDerivedClass<TId> : BaseGenericClass<string>
-{
-    public TId Id { get; set; }
-
-    public MixedDerivedClass(string value, TId id) : base(value)
-    {
-        Id = id;
-    }
-
-    public void DisplayMixedValue()
-    {
-        Console.WriteLine($"Mixed derived value (Base: {Value}, Id: {Id})");
-    }
-}
-
-/*
-// Example Usage:
-SpecificDerivedClass specific = new SpecificDerivedClass("hello");
-specific.DisplayValue();
-specific.DisplaySpecificValue();
-// Output:
-// Base value (String): hello
-// Specific derived value: HELLO
-
-GenericDerivedClass<int> genericDerived = new GenericDerivedClass<int>(123);
-genericDerived.DisplayValue();
-genericDerived.DisplayGenericDerivedValue();
-// Output:
-// Base value (Int32): 123
-// Generic derived value (Int32): 123
-
-MixedDerivedClass<Guid> mixedDerived = new MixedDerivedClass<Guid>("item", Guid.NewGuid());
-mixedDerived.DisplayValue();
-mixedDerived.DisplayMixedValue();
-// Output:
-// Base value (String): item
-// Mixed derived value (Base: item, Id: ...)
-*/
 #endregion
 
 #region Q20: Complete Exercise - Create a generic Cache<TKey, TValue> with Add, Get, Remove, Contains, and expiration support.
