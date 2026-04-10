@@ -191,33 +191,33 @@
 #region Q7: What is the 'struct' constraint? Write an example.
 /*
 The **`struct` constraint** (`where T : struct`) specifies that the type argument must be a non-nullable value type. This includes all structs, enums, and primitive types (like `int`, `double`, `bool`). It ensures that the generic type or method works only with value types, preventing reference types from being used.
-*/
+//*/
 
-public class ValueTypeProcessor<T> where T : struct
-{
-    public T Value { get; set; }
+//public class ValueTypeProcessor<T> where T : struct
+//{
+//    public T Value { get; set; }
 
-    public ValueTypeProcessor(T value)
-    {
-        Value = value;
-    }
+//    public ValueTypeProcessor(T value)
+//    {
+//        Value = value;
+//    }
 
-    public void DisplayValue()
-    {
-        Console.WriteLine($"The value is: {Value} (Type: {typeof(T).Name})");
-    }
-}
+//    public void DisplayValue()
+//    {
+//        Console.WriteLine($"The value is: {Value} (Type: {typeof(T).Name})");
+//    }
+//}
 
-/*
-// Example Usage:
-ValueTypeProcessor<int> intProcessor = new ValueTypeProcessor<int>(100);
-intProcessor.DisplayValue(); // Output: The value is: 100 (Type: Int32)
+///*
+//// Example Usage:
+//ValueTypeProcessor<int> intProcessor = new ValueTypeProcessor<int>(100);
+//intProcessor.DisplayValue(); // Output: The value is: 100 (Type: Int32)
 
-ValueTypeProcessor<double> doubleProcessor = new ValueTypeProcessor<double>(99.99);
-doubleProcessor.DisplayValue(); // Output: The value is: 99.99 (Type: Double)
+//ValueTypeProcessor<double> doubleProcessor = new ValueTypeProcessor<double>(99.99);
+//doubleProcessor.DisplayValue(); // Output: The value is: 99.99 (Type: Double)
 
-// ValueTypeProcessor<string> stringProcessor = new ValueTypeProcessor<string>("test"); // Compile-time error: 'string' must be a non-nullable value type
-*/
+//// ValueTypeProcessor<string> stringProcessor = new ValueTypeProcessor<string>("test"); // Compile-time error: 'string' must be a non-nullable value type
+//*/
 #endregion
 
 #region Q8: What is the 'class' constraint? Write an example.
