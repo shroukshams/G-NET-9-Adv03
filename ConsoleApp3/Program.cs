@@ -253,37 +253,37 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q9: What is the 'new()' constraint? Write an example.
-/*
-The **`new()` constraint** (`where T : new()`) specifies that the type argument must have a public parameterless constructor. This allows the generic type or method to create new instances of `T` using `new T()`. This constraint must be the last constraint specified for a type parameter.
-*/
+///*
+//The **`new()` constraint** (`where T : new()`) specifies that the type argument must have a public parameterless constructor. This allows the generic type or method to create new instances of `T` using `new T()`. This constraint must be the last constraint specified for a type parameter.
+//*/
 
-public class Factory<T> where T : new()
-{
-    public T CreateInstance()
-    {
-        return new T();
-    }
-}
+//public class Factory<T> where T : new()
+//{
+//    public T CreateInstance()
+//    {
+//        return new T();
+//    }
+//}
 
-public class MyClass
-{
-    public string Name { get; set; }
-    public MyClass() { Name = "Default"; }
-}
+//public class MyClass
+//{
+//    public string Name { get; set; }
+//    public MyClass() { Name = "Default"; }
+//}
 
-public class AnotherClass
-{
-    public AnotherClass(string name) { /* ... */ }
-}
+//public class AnotherClass
+//{
+//    public AnotherClass(string name) { /* ... */ }
+//}
 
-/*
-// Example Usage:
-Factory<MyClass> myClassFactory = new Factory<MyClass>();
-MyClass instance = myClassFactory.CreateInstance();
-Console.WriteLine($"Created instance of MyClass with Name: {instance.Name}"); // Output: Created instance of MyClass with Name: Default
+///*
+//// Example Usage:
+//Factory<MyClass> myClassFactory = new Factory<MyClass>();
+//MyClass instance = myClassFactory.CreateInstance();
+//Console.WriteLine($"Created instance of MyClass with Name: {instance.Name}"); // Output: Created instance of MyClass with Name: Default
 
-// Factory<AnotherClass> anotherClassFactory = new Factory<AnotherClass>(); // Compile-time error: 'AnotherClass' must have a public parameterless constructor
-*/
+//// Factory<AnotherClass> anotherClassFactory = new Factory<AnotherClass>(); // Compile-time error: 'AnotherClass' must have a public parameterless constructor
+//*/
 #endregion
 
 #region Q10: What is the interface constraint? Write an example.
