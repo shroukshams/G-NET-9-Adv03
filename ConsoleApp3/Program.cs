@@ -221,35 +221,35 @@ The **`struct` constraint** (`where T : struct`) specifies that the type argumen
 #endregion
 
 #region Q8: What is the 'class' constraint? Write an example.
-/*
-The **`class` constraint** (`where T : class`) specifies that the type argument must be a reference type. This includes classes, interfaces, delegates, and arrays. It ensures that the generic type or method works only with reference types, preventing value types from being used.
-*/
+///*
+//The **`class` constraint** (`where T : class`) specifies that the type argument must be a reference type. This includes classes, interfaces, delegates, and arrays. It ensures that the generic type or method works only with reference types, preventing value types from being used.
+//*/
 
-public class ReferenceTypeProcessor<T> where T : class
-{
-    public T Data { get; set; }
+//public class ReferenceTypeProcessor<T> where T : class
+//{
+//    public T Data { get; set; }
 
-    public ReferenceTypeProcessor(T data)
-    {
-        Data = data;
-    }
+//    public ReferenceTypeProcessor(T data)
+//    {
+//        Data = data;
+//    }
 
-    public bool IsNull()
-    {
-        return Data == null;
-    }
-}
+//    public bool IsNull()
+//    {
+//        return Data == null;
+//    }
+//}
 
-/*
-// Example Usage:
-ReferenceTypeProcessor<string> stringProcessor = new ReferenceTypeProcessor<string>("Hello");
-Console.WriteLine($"Is string data null? {stringProcessor.IsNull()}"); // Output: Is string data null? False
+///*
+//// Example Usage:
+//ReferenceTypeProcessor<string> stringProcessor = new ReferenceTypeProcessor<string>("Hello");
+//Console.WriteLine($"Is string data null? {stringProcessor.IsNull()}"); // Output: Is string data null? False
 
-ReferenceTypeProcessor<List<int>> listProcessor = new ReferenceTypeProcessor<List<int>>(null);
-Console.WriteLine($"Is list data null? {listProcessor.IsNull()}"); // Output: Is list data null? True
+//ReferenceTypeProcessor<List<int>> listProcessor = new ReferenceTypeProcessor<List<int>>(null);
+//Console.WriteLine($"Is list data null? {listProcessor.IsNull()}"); // Output: Is list data null? True
 
-// ReferenceTypeProcessor<int> intProcessor = new ReferenceTypeProcessor<int>(10); // Compile-time error: 'int' must be a reference type
-*/
+//// ReferenceTypeProcessor<int> intProcessor = new ReferenceTypeProcessor<int>(10); // Compile-time error: 'int' must be a reference type
+//*/
 #endregion
 
 #region Q9: What is the 'new()' constraint? Write an example.
